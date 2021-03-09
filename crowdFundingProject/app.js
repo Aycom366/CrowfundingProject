@@ -35,6 +35,20 @@ const hrStyles = {
     margin  : '0 auto'
 };
 
+function toggleBookmark(){
+     if (window.innerWidth <= 480){
+        bookmarkP.style.display = 'none';
+        bookmark.style.width = 'auto';
+    }else{
+        bookmarkP.style.display = 'inline-block';
+        bookmark.style.width = '200px';
+    }
+}
+
+window.addEventListener('load',()=>{
+    toggleBookmark();
+});
+
 window.addEventListener('resize',()=>{
     if (window.innerWidth <= 768){
         hr.forEach(item => {
@@ -46,14 +60,7 @@ window.addEventListener('resize',()=>{
            item.style.display = 'none';
         });
     }
-    
-    if (window.innerWidth <= 480){
-        bookmarkP.style.display = 'none';
-        bookmark.style.width = 'auto';
-    }else{
-        bookmarkP.style.display = 'inline-block';
-        bookmark.style.width = '200px';
-    }
+    toggleBookmark();
 });
 
 //create click eventlistener for bookmark
@@ -84,11 +91,6 @@ for(let i = 0; i < radioBtn.length; i++){
                 formActive =  _parent.nextElementSibling;
                 formActive.classList.remove('formElement');
                 formActive.classList.add('formActive');
-                // if (window.innerWidth <= 768){
-                //     formActive.classList.remove('formElement');
-                //     formActive.classList.remove('formActive');
-                //     formActive.classList.add();
-                // }
             }
        }
        //to change unchecked readio buttons to their defualt
@@ -127,10 +129,10 @@ closeModalBtn.addEventListener('click',()=>{
     openModal.classList.add('modal_container');
 });
 
-const btnContinue = document.querySelectorAll('.back_items form div button');
+const btnContinue = document.querySelectorAll('.back_items form div div');
 const btngotIt = document.querySelector('#thanks button');
-for(let i = 0; i < btnContinue.length; i++){
-        btnContinue[i].addEventListener('click',()=>
+btnContinue.foreach(item=>{
+    item.addEventListener('click',()=>
         {
             openModal.classList.remove('modalActive');
             openModal.classList.remove('modal_container');
@@ -139,7 +141,7 @@ for(let i = 0; i < btnContinue.length; i++){
             modalokay.classList.add('thanks');
         }
     );
-}
+});
 
 btngotIt.addEventListener('click',()=>{
     over.classList.remove('over');
