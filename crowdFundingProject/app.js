@@ -141,6 +141,7 @@ btnContinue.foreach(item=>{
             modalokay.classList.add('thanks');
         }
     );
+    break;
 });
 
 btngotIt.addEventListener('click',()=>{
